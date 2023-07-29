@@ -13,9 +13,23 @@ contract AliceAndBob is ERC1155PresetMinterPauser, DefaultOperatorFilterer {
     constructor() ERC1155PresetMinterPauser("") {
 
         // (optional) mint existing items
-        _mint(msg.sender, 1, 1, "");
-        _mint(msg.sender, 2, 3, "");
-        _mint(msg.sender, 3, 5, "");
+        _mint(msg.sender, 1, 1, "");  // Origin
+        _mint(msg.sender, 2, 1, "");  // Millennium
+        _mint(msg.sender, 3, 1, "");  // Sarah
+        _mint(msg.sender, 4, 1, "");  // Hippy
+        _mint(msg.sender, 5, 1, "");  // Monk
+        _mint(msg.sender, 6, 1, "");  // Mask
+        _mint(msg.sender, 7, 1, "");  // Astro
+        _mint(msg.sender, 8, 1, "");  // Patricia
+        _mint(msg.sender, 9, 1, "");  // Stefan
+        _mint(msg.sender, 10, 1, ""); // Mali
+        _mint(msg.sender, 11, 1, ""); // On Fire
+        _mint(msg.sender, 12, 55, "");// Bored Town Art Contest
+        _mint(msg.sender, 13, 1, ""); // Neo
+        _mint(msg.sender, 14, 1, ""); // LUNGLEE
+        _mint(msg.sender, 15, 1, ""); // Candy Chan
+        _mint(msg.sender, 16, 1, ""); // Rare Candy
+        _mint(msg.sender, 17, 1, ""); // Santa
     }
 
     // metadata
