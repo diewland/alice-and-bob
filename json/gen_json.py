@@ -28,7 +28,14 @@ with open(CSV_PATH) as csvfile:
         id = int(row["ID"])
 
         # craft attributes
-        attrs = [] # TODO
+        attrs = []
+        for t in TRAITS:
+            v = row[t]
+            if v != "":
+                attrs.append({
+                    "trait_type": t,
+                    "value": v,
+                })
 
         METADATA["name"]        = row["Name"]
         METADATA["description"] = row["Desc"]
