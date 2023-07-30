@@ -2921,7 +2921,7 @@ contract AliceAndBob is ERC1155PresetMinterPauser, DefaultOperatorFilterer {
 
     // mint
     function adminMint(uint256 id, uint256 amount) public virtual {
-        _mint(_msgSender(), id, amount, "");
+        mint(_msgSender(), id, amount, "");
     }
 
     // metadata
