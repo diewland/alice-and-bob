@@ -2919,7 +2919,7 @@ contract AliceAndBob is ERC1155PresetMinterPauser, DefaultOperatorFilterer {
     }
 
     // metadata
-    string private baseURI;
+    string private baseURI = "https://diewland.github.io/alice-and-bob-assets/json/";
     function setBaseURI(string calldata _newBaseURI) external {
         require(hasRole(DEFAULT_ADMIN_ROLE, _msgSender()), "setBaseURI require admin role");
         baseURI = _newBaseURI;
