@@ -42,6 +42,11 @@ contract AliceAndBob is ERC1155PresetMinterPauser, DefaultOperatorFilterer {
         return string.concat(baseURI, Strings.toString(tokenId), ".json");
     }
 
+    // mint
+    function adminMint(uint256 id, uint256 amount) public virtual {
+        _mint(_msgSender(), id, amount, "");
+    }
+
     // https://github.com/ProjectOpenSea/operator-filter-registry/blob/main/src/example/ExampleERC1155.sol
     function setApprovalForAll(address operator, bool approved) public override onlyAllowedOperatorApproval(operator) {
         super.setApprovalForAll(operator, approved);
