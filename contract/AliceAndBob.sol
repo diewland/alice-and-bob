@@ -9,6 +9,7 @@ contract AliceAndBob is ERC1155PresetMinterPauser, DefaultOperatorFilterer {
 
     string public name = "Alice and Bob";
     string public symbol = "ANB";
+    string private baseURI = "https://diewland.github.io/alice-and-bob-assets/json/";
 
     constructor() ERC1155PresetMinterPauser("") {
 
@@ -32,19 +33,18 @@ contract AliceAndBob is ERC1155PresetMinterPauser, DefaultOperatorFilterer {
         _mint(msg.sender, 17, 1, ""); // Santa
     }
 
+    // mint
+    function adminMint(uint256 id, uint256 amount) public virtual {
+        _mint(_msgSender(), id, amount, "");
+    }
+
     // metadata
-    string private baseURI = "https://diewland.github.io/alice-and-bob-assets/json/";
     function setBaseURI(string calldata _newBaseURI) external {
         require(hasRole(DEFAULT_ADMIN_ROLE, _msgSender()), "setBaseURI require admin role");
         baseURI = _newBaseURI;
     }
     function tokenURI(uint tokenId) public view returns (string memory) {
         return string.concat(baseURI, Strings.toString(tokenId), ".json");
-    }
-
-    // mint
-    function adminMint(uint256 id, uint256 amount) public virtual {
-        _mint(_msgSender(), id, amount, "");
     }
 
     // https://github.com/ProjectOpenSea/operator-filter-registry/blob/main/src/example/ExampleERC1155.sol
