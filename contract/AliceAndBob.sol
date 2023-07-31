@@ -35,12 +35,13 @@ contract AliceAndBob is ERC1155PresetMinterPauser, DefaultOperatorFilterer {
 
     // mint
     function adminMint(uint256 id, uint256 amount) public virtual {
+        require(hasRole(DEFAULT_ADMIN_ROLE, _msgSender()), "admin only");
         mint(_msgSender(), id, amount, "");
     }
 
     // metadata
     function setBaseURI(string calldata _newBaseURI) external {
-        require(hasRole(DEFAULT_ADMIN_ROLE, _msgSender()), "setBaseURI require admin role");
+        require(hasRole(DEFAULT_ADMIN_ROLE, _msgSender()), "admin only");
         baseURI = _newBaseURI;
     }
     function tokenURI(uint tokenId) public view returns (string memory) {
